@@ -1,6 +1,8 @@
 class ProdImagesController < ApplicationController
   before_action :set_prod_image, only: [:show, :edit, :update, :destroy]
   before_action :set_product
+  before_filter :authenticate_user!, :except => [:index, :show]
+
 
   # GET /prod_images
   def index

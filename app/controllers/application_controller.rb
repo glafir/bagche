@@ -7,7 +7,7 @@ skip_before_action :verify_authenticity_token, if: :json_request?
 #after_action :logging, only: [:create, :update, :destroy]
 require 'devise_traceable'
 #require 'suncalc'
-before_filter :authenticate_user!, :except => [:index, :show, :error_404, :error_403]
+before_filter :authenticate_user!, :except => [:error_404, :error_403]
 helper_method :sort_column, :sort_direction
 
 #require 'date'

@@ -1,5 +1,6 @@
 class UserTracingsController < ApplicationController
   before_filter :set_user_tracing, only: [:show]
+  before_filter :authenticate_user!
 
   def index
     @user_tracings = UserTracing.order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])

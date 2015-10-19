@@ -1,6 +1,8 @@
 class CountriesController < ApplicationController
   before_filter :set_country, only: [:show, :tw_show, :edit, :update, :destroy]
   before_filter :set_towns, only: [:tw_show, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
+
 
   def index
     @countries = Country.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])
