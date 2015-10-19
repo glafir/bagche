@@ -1,0 +1,42 @@
+= form_for @user,  validate: true , html: { class: "form form-horizontal user" } do |f|
+  .form-group
+    = f.label "Изменить avatar", class: 'control-label'
+    .controls
+      = f.file_field :avatar, :class => "btn btn-default", required: true, :accept => 'image/png,image/gif,image/jpeg,image/jpg'
+  .form-group
+    = f.label :username, class: 'control-label'
+    .controls
+      = f.text_field :username, class: 'form-control', required: true
+  .form-group
+    = f.label :email, class: 'control-label'
+    .controls
+      = f.text_field :email, class: 'form-control', required: true
+  .form-group
+    = f.label :password, class: 'control-label'
+    .controls
+      = f.password_field :password, class: 'form-control', required: true
+  .form-group
+    = f.label :password_confirmation, class: 'control-label'
+    .controls
+      = f.password_field :password_confirmation, class: 'form-control', required: true
+  .form-group
+    = f.label :time_zone, class: 'control-label'
+    .controls
+      = f.time_zone_select :time_zone, nil, {}, :class => 'form-control', required: true
+  .form-group
+    = f.label :town_id, class: 'control-label'
+    .controls
+      = autocomplete_field_tag 'town', '', autocomplete_town_accent_city_towns_path, :size => 30, 'data-auto-focus' => true, :update_elements => {:id => '#user_town_id'}, :value => params[:town],  class: 'form-control'
+      = f.hidden_field :town_id, required: true
+  .form-group
+    = f.label :user_theme_id, class: 'control-label'
+    .controls
+      = f.select :user_theme_id, UserTheme.order(:theme).collect{|item| [item.theme, item.id]}, {}, class: 'form-control', required: true
+  .form-group
+    = f.label :role, class: 'control-label'
+    .controls
+      = f.select :role, User.roles.keys.map {|role| [role.titleize,role]}, {}, class: 'form-control'
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name_rus: MyString
+  name_eng: MyString
+  country_id: 1
+  area: 1.5
+  population: 1
+  capitalcity_id: 1
+
+two:
+  name_rus: MyString
+  name_eng: MyString
+  country_id: 1
+  area: 1.5
+  population: 1
+  capitalcity_id: 1

@@ -1,0 +1,20 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @user_tracing.user.username
+%p
+  %b Ip address:
+  = @user_tracing.ip_address
+%p
+  %b Sign In At
+  = @user_tracing.sign_in_at
+%p
+  %b Sign Out At:
+  = @user_tracing.sign_out_at
+%p
+  %b Session Duration
+  =  Time.diff(Time.parse(@user_tracing.sign_in_at.to_s), Time.parse(@user_tracing.sign_out_at.to_s), '%H %N')[:diff]
+
+\|
+= link_to "назад", :back, :class => "jqbutton"

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b State:
+  = @order_state.state
+
+= link_to 'Edit', edit_order_state_path(@order_state)
+\|
+= link_to 'Back', order_states_path

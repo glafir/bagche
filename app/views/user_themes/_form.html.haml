@@ -1,0 +1,16 @@
+= form_for @user_theme, html: { class: "form form-horizontal user_theme" } do |f|
+  - if @user_theme.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user_theme.errors.count, "error")} prohibited this user_theme from being saved:"
+      %ul
+        - @user_theme.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group, :class => 'control-label col-md-2'
+    = f.label :theme
+    .controls
+      = f.text_field :theme, :class => 'text_field form-control', required: true
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), user_themes_path, :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+

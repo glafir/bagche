@@ -1,0 +1,19 @@
+%h1 Listing user_themes
+
+%table.table.table-striped.table-hover.table-condensed
+  %tr
+    %th Theme
+    %th
+    %th
+    %th
+
+  - @user_themes.each do |user_theme|
+    %tr
+      %td= user_theme.theme
+      %td= link_to 'Show', user_theme
+      %td= link_to 'Edit', edit_user_theme_path(user_theme)
+      %td= link_to 'Destroy', user_theme, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New User theme', new_user_theme_path

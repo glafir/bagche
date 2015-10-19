@@ -1,0 +1,24 @@
+- model_class = Order
+%p#notice= notice
+
+%p
+  %b User:
+  = @order.user_id
+%p
+  %b Manager:
+  = @order.manager_id
+%p
+  %b Order state:
+  = @order.order_state_id
+%p
+  %b Order Create
+  =l @order.created_at, format: :long
+%p
+  %b Order Update
+  =l @order.updated_at, format: :long
+
+= link_to 'Edit', edit_user_order_path(@user, @order)
+\|
+= link_to (t '.title', :default => model_class.model_name.human.pluralize.titleize), user_orders_path(@user)
+\|
+= link_to 'back', :back

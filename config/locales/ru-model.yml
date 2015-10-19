@@ -1,0 +1,31 @@
+ru:
+  activerecord:
+    models:
+      country:
+        one: Страна
+        zero: Стран
+        few: Страны
+        many: Стран
+        other: Стран
+      user:
+        one: Пользователь
+        zero: Пользователей
+        few: Пользователя
+        many: Пользователей
+        other: Пользователей
+      product:
+        one: Товар
+        zero: Товаров
+        few: Товара
+        many: Товаров
+        other: Товаров
+      brand:
+        zero: Производителей
+        few: Производителя
+        many: Производителей
+        one: Производитель
+        other: Производителей
+    attributes:
+      country:
+        country_name: 'Название страны'
+        created_at: "Создан"

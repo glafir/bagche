@@ -1,0 +1,173 @@
+:javascript
+  jQuery(document).ready(function(){
+     $('#analog-clock-utc').clock({offset: '0', type: 'analog'});
+     $('#analog-clock-eu').clock({offset: '+1', type: 'analog'});
+     $('#analog-clock-msk').clock({offset: '+3', type: 'analog'});
+     $('#analog-clock-nsb').clock({offset: '+6', type: 'analog'});
+     $('#analog-clock-jap').clock({offset: '+9', type: 'analog'});
+     $('#analog-clock-ykt').clock({offset: '+9', type: 'analog'});
+     $('#analog-clock-ezh').clock({offset: '+10', type: 'analog'});
+     $('#analog-clock-sah').clock({offset: '+11', type: 'analog'});
+     $('#analog-clock-kam').clock({offset: '+12', type: 'analog'});
+     $('#analog-clock-and').clock({offset: '+13', type: 'analog'});
+     $('#analog-clock-nyr').clock({offset: '-4', type: 'analog'});
+     $('#analog-clock-las').clock({offset: '-7', type: 'analog'});
+  
+     $('#digital-clock-utc').clock({offset: '0', type: 'digital'});
+     $('#digital-clock-eu').clock({offset: '+1', type: 'digital'});
+     $('#digital-clock-msk').clock({offset: '+3', type: 'digital'});
+     $('#digital-clock-nsb').clock({offset: '+6', type: 'digital'});
+     $('#digital-clock-jap').clock({offset: '+9', type: 'digital'});
+     $('#digital-clock-ykt').clock({offset: '+9', type: 'digital'});
+     $('#digital-clock-ezh').clock({offset: '+10', type: 'digital'});
+     $('#digital-clock-sah').clock({offset: '+11', type: 'digital'});
+     $('#digital-clock-kam').clock({offset: '+12', type: 'digital'});
+     $('#digital-clock-and').clock({offset: '+13', type: 'digital'});
+     $('#digital-clock-nyr').clock({offset: '-4', type: 'digital'});
+     $('#digital-clock-las').clock({offset: '-7', type: 'digital'});
+  });
+#wclock.wclock
+  .clock-utc.clock-section
+    %ul#analog-clock-utc.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-utc.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title UTC (0)
+  .clock-eu.clock-section
+    %ul#analog-clock-eu.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-eu.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Брюссель (UTC+1)
+  .clock-msk.clock-section
+    %ul#analog-clock-msk.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-msk.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Москва (UTC+3)
+  .clock-nsb.clock-section
+    %ul#analog-clock-nsb.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-nsb.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Новосибирск (UTC+6)
+  .clock-jap.clock-section
+    %ul#analog-clock-jap.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-jap.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Токио (UTC+9)
+  .clock-ykt.clock-section
+    %ul#analog-clock-ykt.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-ykt.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Якутск (UTC+9)
+  .clock-ezh.clock-section
+    %ul#analog-clock-ezh.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-ezh.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Ежинск (UTC+10)
+  .clock-sah.clock-section
+    %ul#analog-clock-sah.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-sah.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Сахалин и Курилы (UTC+11)
+  .clock-kam.clock-section
+    %ul#analog-clock-kam.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-kam.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Камчатка (UTC+12)
+  .clock-and.clock-section
+    %ul#analog-clock-and.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-and.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Анадырь (UTC+10)
+  .clock-nyr.clock-section
+    %ul#analog-clock-nyr.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-nyr.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Нью-Йорк (UTC-4)
+  .clock-las.clock-section
+    %ul#analog-clock-las.analog
+      %li.hour
+      %li.min
+      %li.sec
+      %li.meridiem
+    #digital-clock-las.digital
+      %span.hour
+      %span.min
+      %span.sec
+      %span.meridiem
+    .title Лос Анжелес (UTC-7)

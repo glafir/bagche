@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Theme:
+  = @user_theme.theme
+
+= link_to 'Edit', edit_user_theme_path(@user_theme)
+\|
+= link_to 'Back', user_themes_path

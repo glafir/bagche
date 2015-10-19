@@ -1,0 +1,8 @@
+.page-header
+  %h1=t '.title', :default => @model_class.model_name.human.pluralize.titleize
+= render "paginate_top"
+= render "layouts/per_page"
+#countries
+  =render "countries"
+= render "paginate_bottom"
+= link_to t('.new', :default => t("helpers.links.new")), new_country_path, :class => 'btn btn-primary'

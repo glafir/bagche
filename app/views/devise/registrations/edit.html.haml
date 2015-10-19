@@ -1,0 +1,52 @@
+%h2
+  Изменить пользователя #{current_user.username}
+.field-form
+  .field-form-section
+    .round-image-250
+      = image_tag @user.avatar.url(:size_400)
+  .field-form-section
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :data => {:ajax => 'false'}}) do |f|
+      = devise_error_messages!
+      %h3
+        Редактирование имя и Email #{current_user.username}
+      .field
+        = f.label :username
+        = f.text_field :username, :autofocus => true
+      .field
+        = f.label :email
+        = f.email_field :email
+      .field
+        = f.label :avatar
+        .avatar
+          = f.file_field :avatar
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        .field
+          = f.label "Currently waiting confirmation for:"
+          = resource.unconfirmed_email
+      %div
+        %h3
+          Изменение пароля пользователя #{current_user.username}
+        %div
+          = f.label "Новый пароль:"
+          = f.password_field :password, :autocomplete => "off"
+        %div
+          = f.label "Подтвердите новый пароль:"
+          = f.password_field :password_confirmation
+      %h3
+        Изменение других настроек для #{current_user.username}
+      %div
+        = f.label :time_zone
+        = f.time_zone_select :time_zone
+      .field
+        = f.label :town_id
+        = autocomplete_field_tag 'town', '', autocomplete_town_accent_city_towns_path, :size => 30, 'data-auto-focus' => true, :update_elements => {:id => '#user_town_id'}, :value => params[:town]
+        = f.hidden_field :town_id
+      %div
+        = f.label :user_theme
+        = f.select :user_theme_id, UserTheme.order(:theme).collect{|item| [item.theme, item.id]}
+      %h3 Введите текущий пароль:
+      %div
+        = f.label :current_password
+        = f.password_field :current_password
+      %div= f.submit "Update"
+    = link_to "Back", :back, class: "jqbutton"

@@ -1,0 +1,20 @@
+= form_for [@product, @prod_image], html: { class: "form form-horizontal prod_image" } do |f|
+  - if @prod_image.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@prod_image.errors.count, "error")} prohibited this prod_image from being saved:"
+      %ul
+        - @prod_image.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :product, :class => 'control-label col-md-2'
+    .controls
+      = f.text_field :product_id, value: params[:product_id], class: 'form-control', required: true
+  .form-group
+    = f.label "Изображение к продукту", :class => 'control-label col-md-2'
+    .controls
+      = f.file_field :prodimage, class: 'form-control', required: true
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), product_prod_images_path(@product), :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+

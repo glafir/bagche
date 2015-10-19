@@ -1,0 +1,29 @@
+= form_for [@user, @order], html: { class: "form form-horizontal order" } do |f|
+  - if @order.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      %ul
+        - @order.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :user_id, :class => 'control-label col-md-2'
+    .controls
+      - if current_user.user? or current_user.client?
+        = f.hidden_field :user_id, value: current_user.id
+        = f.text_field :user, class: 'form-control', required: true, value: current_user.username, disabled: true
+      - else
+        = f.select :user_id, User.where(role: 4).order(:username).collect{|item| [item.username, item.id]}, {}, class: 'form-control', required: true
+
+  .form-group
+    = f.label :manager_id, :class => 'control-label col-md-2'
+    .controls
+      = f.select :manager_id, User.where(role: 2).order(:username).collect{|item| [item.username, item.id]},  {:include_blank => "Любой менеджер"}, :class => 'form-control'
+  .form-group
+    = f.label :order_state_id, :class => 'control-label col-md-2'
+    .controls
+      = f.number_field :order_state_id, class: 'form-control', required: true
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), user_orders_path(@user), :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+

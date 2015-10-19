@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  timetableap_id: 1
+  aircompany_id: 1
+
+two:
+  timetableap_id: 1
+  aircompany_id: 1

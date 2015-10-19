@@ -1,0 +1,29 @@
+- model_class = Brand
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped.table-hover.table-condensed
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:brand)
+      %th= model_class.human_attribute_name(:country)
+      %th Запчасти
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @brands.each do |brand|
+      %tr
+        %td= link_to brand.id, brand
+        %td
+          = navbar_dropdown brand.namebrand do
+            = image_tag brand.logotip.thumb_80
+        %td= brand.country.country_name
+        %td
+        %td
+          = link_to brand_path(brand), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
+            = glyph 'info-sign'
+          = link_to edit_brand_path(brand), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
+            = glyph 'pencil'
+          = link_to brand_path(brand), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }"  do
+            = glyph 'remove'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_brand_path, :class => 'btn btn-primary'

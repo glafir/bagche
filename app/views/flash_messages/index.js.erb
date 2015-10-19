@@ -1,0 +1,3 @@
+$("#flash_messages").html("<%= escape_javascript(render("flash_messages/flash_messages")) %>");
+$('.pagination').html('<%= escape_javascript(paginate(@flash_messages, :remote => true).to_s) %>');
+

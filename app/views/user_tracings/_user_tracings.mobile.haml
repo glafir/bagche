@@ -1,0 +1,17 @@
+#user_tracings
+  = render "user_tracings/paginate_top.mobile"
+  %table
+    %tr
+      %th= sortable "user_id"
+      %th= sortable "sign_in_at"
+      %th= sortable "sign_out_at"
+      %th= sortable "ip_address"
+    - @user_tracings.each do |user_tracing|
+      %tr
+        %td= link_to user_tracing.user.username, user_tracing.user
+        %td= link_to user_tracing.sign_in_at.to_s(:short), user_tracing
+        %td= link_to user_tracing.sign_out_at.to_s(:short), user_tracing
+        %td= user_tracing.ip_address
+
+  = render "user_tracings/paginate_bottom.mobile"
+

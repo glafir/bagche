@@ -1,0 +1,21 @@
+- model_class = Flash_mrssagr_state
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
+%table.table.table-striped.table-hover.table-condensed
+  %thead
+    %tr
+      %th State
+      %th
+      %th
+      %th
+
+  %tbody
+    - @flash_message_states.each do |flash_message_state|
+      %tr
+        %td= flash_message_state.state
+        %td= link_to 'Show', flash_message_state
+        %td= link_to 'Edit', edit_flash_message_state_path(flash_message_state)
+        %td= link_to 'Destroy', flash_message_state, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+= link_to 'New Flash message state', new_flash_message_state_path

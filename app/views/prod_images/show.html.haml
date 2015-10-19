@@ -1,0 +1,19 @@
+.raw
+  .col-md-12.cal-lg-10
+    = link_to 'Изменить данную картинку', edit_product_prod_image_path(@product, @prod_image), class: "btn btn-default"
+    \|
+    = link_to 'Вернуться к картинкам товара #{@product.artcode}', product_prod_images_path(@product), class: "btn btn-default"
+    \|
+    = link_to 'Удвлить данную картинку', product_prod_image_path(@product, @prod_image), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
+.raw
+  .col-md-12.cal-lg-10
+    = image_tag @prod_image.prodimage.size_600
+
+.raw
+  .col-md-12.cal-lg-10
+    = link_to 'Изменить данную картинку', edit_product_prod_image_path(@product, @prod_image), class: "btn btn-default"
+    \|
+    = link_to 'Вернуться к картинкам товара #{@product.artcode}', product_prod_images_path(@product), class: "btn btn-default"
+    \|
+    = link_to 'Удвлить данную картинку', product_prod_image_path(@product, @prod_image), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
+

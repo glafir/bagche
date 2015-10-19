@@ -1,0 +1,18 @@
+- model_class = ProdImage
+.page-header
+  %h2=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
+.owl-carousel.owl-theme
+  - @prod_images.each do |prod_image|
+    %div
+      %div
+        = link_to 'Show', product_prod_image_path(@product, prod_image), :class => 'btn btn-xs', title: "show"
+        = link_to 'Edit', edit_product_prod_image_path(@product, prod_image), :class => 'btn btn-xs', title: "edit"
+        = link_to 'Destroy', product_prod_image_path(@product, prod_image), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-xs', title: "delete"
+        %br
+        %br
+        = image_tag prod_image.prodimage.size_300
+        %br
+%br
+= link_to "Вернуться к товару #{@product.id}", @product, class: "btn btn-default"
+= link_to "Добавить картинку к товару #{@product.id}", new_product_prod_image_path(@product), class: "btn btn-default"

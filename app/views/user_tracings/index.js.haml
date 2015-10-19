@@ -1,0 +1,2 @@
+$("#user_tracings").html("#{escape_javascript(render("user_tracings/user_tracings"))}");
+$('.pagination').html('#{escape_javascript(paginate(@user_tracings, :remote => true).to_s)}');

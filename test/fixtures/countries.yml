@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  country_name: MyString
+  country_iata_code: MyString
+  country_icao_code: MyString
+  country_number: 1
+
+two:
+  country_name: MyString
+  country_iata_code: MyString
+  country_icao_code: MyString
+  country_number: 1

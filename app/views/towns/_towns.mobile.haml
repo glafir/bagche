@@ -1,0 +1,33 @@
+= paginate @towns
+%table
+  %tr
+    %th
+      =sortable "country"
+    %th
+      =sortable "city"
+    %th
+      =sortable "accent_city"
+    %th
+      =sortable "city_rus"
+    %th
+      =sortable "region"
+    %th
+      =sortable "latitude"
+    %th
+      =sortable "longitude"
+    %th
+
+  - @towns.each do |town|
+    %tr
+      %td= link_to town.country.country_name, town.country
+      %td= link_to town.city, town
+      %td= link_to town.accent_city, town
+      %td= town.city_rus
+      %td= town.region
+      %td= town.latitude
+      %td= town.longitude
+      %td
+        = link_to 'Edit', edit_town_path(town) if policy(town).edit?
+        = link_to 'Destroy', town, :method => :delete, :data => { :confirm => 'Are you sure?' } if policy(town).destroy?
+
+= paginate @towns

@@ -1,0 +1,8 @@
+= form_tag ap_dist_airports_path, :method => 'get', :id => "towns_search" do
+  = label_tag :start_ap, "Откуда:"
+  = select_tag :start_ap, options_from_collection_for_select(Town.where(country: 'ez').order(:city), "id", "accent_city", params[:start_ap]), prompt: "All Airports"
+  = label_tag :end_ap, "Куда:"
+  = select_tag :end_ap, options_from_collection_for_select(Town.where(country: 'ez').order(:city), "id", "accent_city", params[:end_ap]), prompt: "All Airports"
+  = submit_tag "Измерить расстояние.", :name => nil
+  .tw_dist_towns_path
+    = render "tw_dist_result"

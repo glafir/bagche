@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b State:
+  = @flash_message_state.state
+
+= link_to 'Edit', edit_flash_message_state_path(@flash_message_state)
+\|
+= link_to 'Back', flash_message_states_path

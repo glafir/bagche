@@ -1,0 +1,16 @@
+= form_for @brand, :html => { :class => 'form-horizontal' } do |f|
+  .form-group
+    = f.label "Наименование бренда:", :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :namebrand, :class => 'text_field form-control', required: true
+  .form-group
+    = f.label "Страна:", :class => 'control-label col-md-2'
+    .col-md-10
+      = f.select :country_id, Country.order(:country_name).collect{|item| [item.country_name, item.id]}, {}, :class => 'text_field form-control', required: true
+  .form-group
+    = f.label "Логотип брэнда:", :class => 'control-label col-md-2'
+    .col-md-10
+      = f.file_field :logotip, :class => "btn btn-default", :accept => 'image/png,image/gif,image/jpeg,image/jpg'
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), brands_path, :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'

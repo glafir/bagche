@@ -1,0 +1,35 @@
+%p#notice= notice
+
+%p
+  %b Created at:
+  = @flash_message.created_at
+%p
+  %b ID:
+  = @flash_message.id
+%p
+  %b User:
+  = @flash_message.user.username
+  (#{@flash_message.user.email})
+%p
+  %b User IP:
+  = @flash_message.request_ip
+%p
+  %b Request method:
+  = @flash_message.request_method
+
+%p
+  %b Request referrer:
+  = @flash_message.request_referrer
+
+%p
+  %b UserAgent:
+  = @flash_message.useragent
+
+%p
+  %b Request url:
+  = @flash_message.request_url
+%p
+  %b Message:
+  = @flash_message.message
+
+= link_to 'Back', :back, :class => 'jqbuttom'

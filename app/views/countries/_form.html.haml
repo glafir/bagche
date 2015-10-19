@@ -1,0 +1,21 @@
+= form_for @country, html: { class: "form form-horizontal country" } do |f|
+  .form-group
+    = f.label :country_name, class: 'control-label'
+    .controls
+      = f.text_field :country_name, class: 'form-control', required: true
+  .form-group
+    = f.label :country_iata_code, class: 'control-label'
+    .controls
+      = f.text_field :country_iata_code, class: 'form-control', required: true
+  .form-group
+    = f.label :country_icao_code, class: 'control-label'
+    .controls
+      = f.text_field :country_icao_code, class: 'form-control', required: true
+  .form-group
+    = f.label :country_number, class: 'control-label'
+    .controls
+      = f.text_field :country_number, class: 'form-control', required: true
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), countries_path, :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+

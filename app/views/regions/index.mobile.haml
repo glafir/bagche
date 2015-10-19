@@ -1,0 +1,29 @@
+%h1 Listing regions
+
+%table
+  %tr
+    %th Name rus
+    %th Name eng
+    %th Country
+    %th Area
+    %th Population
+    %th Capitalcity
+    %th
+    %th
+    %th
+
+  - @regions.each do |region|
+    %tr
+      %td= region.name_rus
+      %td= region.name_eng
+      %td= region.country_id
+      %td= region.area
+      %td= region.population
+      %td= region.capitalcity_id
+      %td= link_to 'Show', region
+      %td= link_to 'Edit', edit_region_path(region)
+      %td= link_to 'Destroy', region, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Regions', new_region_path

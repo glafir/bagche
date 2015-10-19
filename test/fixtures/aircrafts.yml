@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  aircraft_model: MyString
+  aircraft_icao_code: MyString
+  aircraft_iata_code: MyString
+  aircraft_seats: 1
+  aircraft_wake_category_id: 1
+  aircraft_webinfo: MyString
+  aircraft_type_id: 1
+  aircraft_maxspeed: 1
+
+two:
+  aircraft_model: MyString
+  aircraft_icao_code: MyString
+  aircraft_iata_code: MyString
+  aircraft_seats: 1
+  aircraft_wake_category_id: 1
+  aircraft_webinfo: MyString
+  aircraft_type_id: 1
+  aircraft_maxspeed: 1

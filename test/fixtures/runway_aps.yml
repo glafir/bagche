@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  airport_id: 1
+  runway_length: 1
+  runway_elevation: 1
+  runway_data: MyString
+
+two:
+  airport_id: 1
+  runway_length: 1
+  runway_elevation: 1
+  runway_data: MyString

@@ -1,0 +1,4 @@
+#apple_pagination.apple_pagination
+  .page_info
+    = page_entries_info @orders
+  = paginate @orders, :remote => true

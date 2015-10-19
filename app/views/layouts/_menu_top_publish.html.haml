@@ -1,0 +1,28 @@
+= navbar fixed: :top do
+  = navbar_header
+  = navbar_collapse do
+    = navbar_group class: 'logo', id: 'menu' do
+      = navbar_dropdown "Поиск" do
+        %li= link_to "По брэндам"
+        %li= link_to "В категориях"
+        %li= link_to "Поиск по всему каталогу"
+      = navbar_item '#' do
+        %span.glyphicon.glyphicon-hand-right
+        Связаться с нами!
+    = navbar_group align: 'right' do
+      = navbar_dropdown "Панель входа" do
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:data => {:ajax => 'false'}, class: "form user"} ) do |f|
+          = f.text_field :login, :autofocus => true, class: "form-control border-radius-large", placeholder: "Username"
+          = f.password_field :password, class: "form-control", placeholder: "Password"
+          - if devise_mapping.rememberable?
+            = f.label "запомнить меня"
+            = f.check_box :remember_me
+          = f.button "Войти", class: "btn btn-info btn-block"
+          %a{:href => "index.html"} Забыл пароль?
+          = f.label "или влйти с"
+          = f.button "Войти с Google", class: "btn btn-primary btn-block"
+          = f.button "Войти с VK", class: "btn btn-primary btn-block"
+          :javascript
+            var elem = document.querySelector('#user_remember_me');
+            var init = new Switchery(elem,{ color: '#fec200'});
+

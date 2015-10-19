@@ -1,0 +1,3 @@
+class FlashMessageStatePolicy < ApplicationPolicy
+
+end

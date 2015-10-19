@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name rus:
+  = @region.name_rus
+%p
+  %b Name eng:
+  = @region.name_eng
+%p
+  %b Country:
+  = @region.country_id
+%p
+  %b Area:
+  = @region.area
+%p
+  %b Population:
+  = @region.population
+%p
+  %b Capitalcity:
+  = @region.capitalcity_id
+
+= link_to 'Edit', edit_region_path(@region)
+\|
+= link_to 'Back', regions_index_path

@@ -1,0 +1,21 @@
+- model_class = OrderHistory
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
+%h1 Listing order_histories
+
+%table.table.table-striped.table-hover.table-condensed
+  %thead
+    %tr
+      %th Заказ №
+      %th История заказа
+      %th Время
+      %th Кем обработан
+
+  %tbody
+    - @order_histories.each do |order_history|
+      %tr
+        %td= order_history.order_id
+        %td= order_history.history_store
+        %td=l order_history.created_at, format: :long
+        %td= order_history.user.username

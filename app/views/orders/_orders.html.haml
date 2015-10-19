@@ -1,0 +1,31 @@
+- model_class = Order
+%table.table.table-striped.table-hover.table-condensed
+  %thead
+    %tr
+      %th № заказа
+      %th Что заказано
+      %th Заказчик
+      %th Менеджер
+      %th Статус заказа
+      %th Создан
+      %th Обновлён
+      %th История заказа
+      %th
+      %th
+      %th
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= link_to "Заказ №#{order.id}", user_order_path(@user, order)
+        %td= link_to "Заказ №#{order.id}", order.product
+        %td= link_to order.user.username, order.user if order.user.id?
+        %td= link_to order.manager.username, order.manager if order.manager_id?
+        - bgcolor = '#173B0B' if order.order_state_id == 1
+        %td{bgcolor: bgcolor}= order.order_state.state
+        %td=l order.created_at, format: :long
+        %td=l order.updated_at, format: :long
+        %td= link_to "Плказать историю заказа", user_order_order_histories_path(@user, order)
+        %td= link_to 'Show', user_order_path(@user, order)
+        %td= link_to 'Edit', edit_user_order_path(@user, order)
+        %td= link_to 'Destroy', user_order_path(@user, order), :method => :delete, :data => { :confirm => 'Are you sure?' }

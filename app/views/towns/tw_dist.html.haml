@@ -1,0 +1,12 @@
+= form_tag tw_dist_towns_path, :method => 'get', :id => "timetableaps_search" do
+  %p
+    = label_tag :start_ap, "Откуда:"
+    = autocomplete_field_tag 'start', '', autocomplete_town_accent_city_country_towns_path, :size => 20, 'data-auto-focus' => true, :update_elements => {:id => '#start_ap'}, :value => params[:start]
+    = hidden_field_tag :start_ap, params[:start_ap]
+  %p
+    = label_tag :end_ap, "Куда:"
+    = autocomplete_field_tag 'end', '', autocomplete_town_accent_city_country_towns_path, :size => 20,  'data-auto-focus' => true, :update_elements => {:id => '#end_ap'}, :value => params[:end]
+    = hidden_field_tag :end_ap, params[:end_ap]
+  = submit_tag "Измерить расстояние.", :name => nil
+  .ap_dist_airports_path
+    = render "tw_dist_result"

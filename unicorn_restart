@@ -1,0 +1,5 @@
+#!/bin/sh
+unicorn_pid=`cat /home/glafir/RoR/bagche/tmp/pids/unicorn.pid`
+echo "Restarting Unicorn ($unicorn_pid)"
+kill -9 $unicorn_pid
+/home/glafir/RoR/bagche/ic_start

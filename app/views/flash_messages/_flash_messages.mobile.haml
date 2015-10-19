@@ -1,0 +1,30 @@
+#flash_messages
+  = render "flash_messages/paginate_top"
+  %table{:width => '80%'}
+    %thead
+      %tr
+        %th Time at
+        %th User
+        %th User IP
+        %th Request method
+        %th Request Referrer
+        %th UserAgent
+        %th Request url
+        %th Message Code
+        %th Message
+    %tbody
+      - @flash_messages.each do |flash_message|
+        %tr
+          %td= flash_message.created_at.to_s(:short)
+          %td= link_to flash_message.user.username, flash_message.user
+          %td= flash_message.request_ip
+          %td= flash_message.request_method
+          %td= flash_message.request_referrer
+          %td= flash_message.useragent
+          %td= flash_message.request_url
+          %td= flash_message.flash_message_state_id
+          %td= link_to flash_message.message, flash_message
+
+  = render "flash_messages/paginate_bottom"
+
+

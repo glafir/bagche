@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /home/glafir/RoR/bagche/
+#unicorn -c /home/glafir/RoR/ic-glafir/unicorn.rb -E production -D
+unicorn -c /home/glafir/RoR/bagche/unicorn.rb -D
+

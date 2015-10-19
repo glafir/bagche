@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_rus: MyString
+  name_eng: MyString
+  zone_station_id: MyString
+
+two:
+  name_rus: MyString
+  name_eng: MyString
+  zone_station_id: MyString

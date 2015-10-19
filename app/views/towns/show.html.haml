@@ -1,0 +1,35 @@
+= link_to 'Edit', edit_country_town_path
+\|
+= link_to "Вернуться назад", :back
+%p#notice= notice
+
+%p
+  %b ID:
+  = @town.id
+%p
+  %b Country:
+  = @town.country.country_name
+%p
+  %b City:
+  = @town.city
+%p
+  %b Accent city:
+  = @town.accent_city
+%p
+  %b Accent city rus:
+  = @town.city_rus
+%p
+  %b Region:
+  = @town.region
+%p
+  %b Latitude:
+  = @town.latitude
+%p
+  %b Longitude:
+  = @town.longitude
+
+- if @airports.blank?
+  %h2 В городе аэропорты отсутствуют.
+- else
+  %h3 About Airports in #{@town.city_rus} (#{@town.accent_city})
+  = render "airports/airports"

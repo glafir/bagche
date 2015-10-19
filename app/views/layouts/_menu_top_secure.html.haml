@@ -1,0 +1,31 @@
+= navbar fixed: :top do
+  = navbar_header
+  = navbar_collapse do
+    = navbar_group class: 'foo', id: 'menu' do
+      %li= link_to image_tag("#{current_user.avatar.url(:thumb_50)}", :class => 'img-circle'), current_user
+      %li= link_to current_user.username, current_user
+      = navbar_dropdown "Поиск" do
+        %li= link_to "По брэндам"
+        %li= link_to "В категориях"
+        %li= link_to "Поиск по всему каталогу"
+      = navbar_item '#' do
+        %span.glyphicon.glyphicon-hand-right
+        Contact Us!
+    = navbar_group align: 'right' do
+      - if user_signed_in?
+        = navbar_dropdown "Для менеджеров" do
+          = navbar_item "Торговые марки/брэнды", brands_path
+          = navbar_item "Продукция", products_path
+          = navbar_item "Заказы", user_orders_path(current_user)
+          = navbar_dropdown_divider
+          = navbar_item "Добавить марку/брэнд", new_brand_path
+          = navbar_item "Добавить продукт", new_product_path
+          = navbar_item "Добавить заказ", new_user_order_path(current_user)
+        = navbar_dropdown "твой профиль: #{current_user.username}" do
+          %li= image_tag current_user.avatar.url(:size_200), class: "img-circle"
+          %li= link_to "My profile", current_user, class: "btn active"
+          %li= link_to 'Edir my profile', edit_user_registration_path, class:"btn active"
+          - if policy(current_user).index?
+            = navbar_item "Users", users_path
+          = navbar_dropdown_divider
+          %li= link_to 'Sign Out', destroy_user_session_path, :method => :delete, class: "btn active" if user_signed_in?

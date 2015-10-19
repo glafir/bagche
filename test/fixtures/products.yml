@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand_id: MyString
+  name: MyString
+  artcode: MyString
+  quantity: 1
+  price: 1.5
+  description: MyString
+
+two:
+  brand_id: MyString
+  name: MyString
+  artcode: MyString
+  quantity: 1
+  price: 1.5
+  description: MyString

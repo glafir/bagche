@@ -1,0 +1,23 @@
+- model_class = Brand
+.page-header
+  %h3= t '.title', :default => model_class.model_name.human.titleize
+
+.raw
+  .col-md-3.lg-2
+    %b= model_class.human_attribute_name(:logotip)
+    %br
+    = image_tag @brand.logotip.size_400 if @brand.logotip?
+  .cok-md-3.col-lg-2.col-md-push-3
+    .fieldset
+      %p
+        %b= model_class.human_attribute_name(:namebrand)
+        .prettyprint= @brand.namebrand
+      %p
+        %b= model_class.human_attribute_name(:country_id)
+        .prettyprint= @brand.country_id
+.raw
+  .col-md-10.col-lg-10.col-md-push-6
+    .form-group
+      = link_to t('.back', :default => t("helpers.links.back")), brands_path, :class => 'btn btn-default'
+      = link_to t('.edit', :default => t("helpers.links.edit")), edit_brand_path(@brand), :class => 'btn btn-default'
+      = link_to t('.destroy', :default => t("helpers.links.destroy")), brand_path(@brand), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

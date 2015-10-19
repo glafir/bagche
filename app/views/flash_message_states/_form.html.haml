@@ -1,0 +1,16 @@
+= form_for @flash_message_state, html: { class: "form form-horizontal flash_message_state" } do |f|
+  - if @flash_message_state.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@flash_message_state.errors.count, "error")} prohibited this flash_message_state from being saved:"
+      %ul
+        - @flash_message_state.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :state, :class => 'control-label col-md-2'
+    .controls
+      = f.text_field :state, class: 'form-control', required: true
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), flash_message_states_path, :class => 'btn btn-default'
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+

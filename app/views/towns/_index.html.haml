@@ -1,0 +1,9 @@
+%h1 Listing towns
+= form_tag "/countries/#{@country.id}/tw_show", :method => 'get',  :id => "towns_search" do
+  %p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
+    #towns
+      = render 'towns/towns'
+%br
+= link_to 'New Town', new_country_town_path(@country)

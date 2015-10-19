@@ -1,0 +1,70 @@
+:javascript
+  jQuery(document).ready(function(){
+  //  setInterval("jQuery('#timeA').load('# span#timeB');",1000);
+    $("#accordion").accordion({
+  	    autoHeight: true,
+  //	    active: 0,
+  	    collapsible: true,
+  	    animate: 1000,
+  	    icons: { "header": "ui-icon-circle-plus", "activeHeader": "ui-icon-circle-arrow-s" }
+    });
+  });
+  //       function show()
+  //        {
+  //            $.ajax({
+  //                url: "/general/timenow",
+  //               cache: false,
+  //                success: function(html){
+  //                    $("#dtime").html(html);
+  //                }
+  //            });
+  //        }
+  
+  //        $(document).ready(function(){
+  //            show();
+  //            setInterval('show()',1000);
+  //        });
+#accordion
+  = render "layouts/usermenu"
+  %h3 Сегодня:
+  %fieldset
+    %span#timeA
+      %span#timeB
+        Ваше время:
+        %p#dtime
+    %p
+      Дата: #{Time.zone.now.stamp("1 january 2000")}
+    %p
+      День недели:  #{Time.zone.now.to_s(:short)}
+  %h3 Астрономические данные (Настройки профиля)
+  %fieldset
+    %p
+      Восзод солнца:
+      %br/
+      = sr = SunRiseSet.new(DateTime.current, current_user.town.latitude,current_user.town.longitude).sunrise.to_s(:time)
+    %p
+      Восход, земные сумерки:
+      %br/
+      = SunRiseSet.new(DateTime.current, current_user.town.latitude,current_user.town.longitude).civilTwilightStart.to_s(:time)
+    %p
+      Восход, астро. сумерки:
+      %br/
+    %p
+      Закат Солнца:
+      %br/
+      = ss = SunRiseSet.new(DateTime.current, current_user.town.latitude,current_user.town.longitude).sunset.to_s(:time)
+    %p
+      Закат, земные сумерки:
+      %br/
+      = SunRiseSet.new(DateTime.current, current_user.town.latitude,current_user.town.longitude).civilTwilightEnd.to_s(:time)
+    %p
+      Закат, астро. сумерки:
+      %br/
+    %p
+      Солнечный полдень:
+      %br/
+      = SunRiseSet.new(DateTime.current, current_user.town.latitude,current_user.town.longitude).solNoon.to_s(:time)
+    %p
+      Долгота дня:
+      %br/
+      = Time.diff(Time.parse(sr), Time.parse(ss), '%H %N')[:diff]

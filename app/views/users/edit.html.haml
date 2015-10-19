@@ -1,0 +1,11 @@
+- model_class = User
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+.field-form
+  .field-form-section
+    .round-image-250
+      = image_tag @user.avatar.url(:size_400)
+  .field-form-section
+    = render 'form'
+    = link_to 'Show', @user, class: "btn btn-default" |
+
