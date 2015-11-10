@@ -1,37 +1,36 @@
 - model_class = Product
 .page-header
-  %h2 Товар #{@product.id} арт.номер #{@product.artcode}
+  %h2 Карточка Товара #{@product.id} арт.номер #{@product.artcode}
 %p Чтобы просмотреть все изображения, зацепите левой кнопкой мыши изображение и протащите мышь влево.
-
-.raw
-  .col-md-5.col-lg-6
+.row
+  .col-md-10.col-lg-9
     = render "prod_images/imgs"
-  .col-md-4.col-lg-3.col-md-push-1.col-lg-push-1
-    %p
-      %b.label.label-default= model_class.human_attribute_name(:brand_id)
-      = @product.brand_id
-    %p
-      %b.label.label-default= model_class.human_attribute_name(:name)
-      = @product.name
-    %p
-      %b.label.label-default= model_class.human_attribute_name(:artcode)
-      = @product.artcode
-    %p
-      %b.label.label-default= model_class.human_attribute_name(:quantity)
-      = @product.quantity
-    %p
-      %b.label.label-default= model_class.human_attribute_name(:price)
-      #{@product.price} руб.
-    %p
-      %b.label.label-default= model_class.human_attribute_name(:description)
-      %br
-      = @product.description
-
-.raw
-  .col-md-10.col-lg-9.col-md-push-3
     .form-group
       = link_to t('.back', :default => t("helpers.links.back")), products_path, :class => 'btn btn-default'
-      = link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(@product), :class => 'btn btn-default'
-      = link_to t('.destroy', :default => t("helpers.links.destroy")), product_path(@product), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
-      = link_to 'Просмотреть картинки у товара', product_prod_images_path(@product), class: "btn btn-default"
-      = link_to 'Добавить картинку к товару', new_product_prod_image_path(@product), class: "btn btn-default"
+      - if user_signed_in?
+        - if policy(@product).edit?
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(@product), :class => 'btn btn-default'
+        - if policy(@product).destroy?
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), product_path(@product), :method=> "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+        = link_to 'Просмотреть картинки у товара', product_prod_images_path(@product), class: "btn btn-default"
+        - if policy(:prod_image).new?
+          = link_to 'Добавить картинку к товару', new_product_prod_image_path(@product), class: "btn btn-default"
+%ul.nav.nav-tabs
+  %li= link_to 'Описание товара', "#panel1", 'data-toggle' => "tab"
+  - if user_signed_in?
+    %li= link_to 'Заказы к товару', "#panel2", 'data-toggle' => "tab"
+  %li= link_to 'Комментарии', "#panel3", 'data-toggle' => "tab"
+  %li= link_to 'Похожие товары', "#panel4", 'data-toggle' => "tab"
+.tab-content
+  #panel1.tab-pane.fade.col-md-10.col-lg-9
+    %h3 Описание товара
+    = render "products/info"
+  - if user_signed_in?
+    #panel2.tab-pane.fade.col-md-10.col-lg-9
+      %h3 Заказы товара
+      = render template: "orders/index"
+  #panel3.tab-pane.fade.col-md-10.col-lg-9
+    %h3 Комментарии к товару
+    = render "comments/comments"
+  #panel4.tab-pane.fade.col-md-10.col-lg-9
+    %h3 сопутствующие товары

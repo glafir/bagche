@@ -5,13 +5,13 @@
   = @comment.comment
 %p
   %b User:
-  = @comment.user_id
+  = @comment.user.username
 %p
-  %b Product:
-  = @comment.product_id
+  %b Product Or Order:
+  = @comment.item_id
 %p
-  %b Order:
-  = @comment.order_id
+  %b Item_type:
+  = @comment.item_type
 
 = link_to 'Edit', edit_comment_path(@comment)
 \|

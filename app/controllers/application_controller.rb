@@ -27,7 +27,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
 before_filter :set_timezone 
 
-respond_to :html, :js, :json, :mobile
+respond_to :html, :js, :json
 after_action :verify_authorized, :except => [:error_404, :error_403]
 rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -35,10 +35,10 @@ def role?(role)
   return !!self.roles.find_by_name(role.to_s.camelize)
 end
 
-def set_timezone
-    tz = current_user ? current_user.time_zone : nil
+  def set_timezone
+    tz = user_signed_in? ? current_user.time_zone : nil
     Time.zone = tz || ActiveSupport::TimeZone["Moscow"]
-end  
+  end  
  
 def validator(object)
   object.valid?
@@ -66,13 +66,13 @@ end
 #    @flash_message_state_id = 405
 #  end
 
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
+#  def set_locale
+#    I18n.locale = params[:locale] || I18n.default_locale
+#  end
 
-  def default_url_options(options = {})
-    { locale: I18n.locale }.merge options
-  end
+#  def default_url_options(options = {})
+#    { locale: I18n.locale }.merge options
+#  end
 
   def force_utf8_params
   traverse = lambda do |object, block|

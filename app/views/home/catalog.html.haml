@@ -1,0 +1,24 @@
+= render "layouts/tabs_filters"
+
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Каталог товаров.
+    - @products.each do |product|
+      .container
+        .row
+          .col-md-5
+            %a{:href => "/products/#{product.id}"}
+              = image_tag product.prod_images.first.prodimage.size_400 if product.prod_images.exists?
+          .col-md-4
+            .panel.panel-default
+              .panel-heading
+                %h4
+                  %i.fa.fa-fw.fa-check
+                  = product.name
+              .panel-body
+                %p= product.description
+                = link_to 'Подробнее', product, :class => "btn btn-default"
+                = link_to 'Заказать', new_user_session_path, :class => "btn btn-default"
+

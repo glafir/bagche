@@ -11,6 +11,6 @@
     .controls
       = f.text_field :state, class: 'form-control', required: true
   = f.submit nil, :class => 'btn btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), order_states_path, :class => 'btn btn-default'
-  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+= link_to t('.cancel', :default => t("helpers.links.cancel")), order_states_path, :class => 'btn btn-default'
+= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
 

@@ -1,9 +1,13 @@
 class Product < ActiveRecord::Base
   belongs_to :brand
   has_many :users, through: :orders
-  has_many :comments
+  has_many :comments, as: :item
   has_many :prod_images
   has_many :orders
+  after_initialize { puts "initialized" } # item.new item.find
+  after_create { puts "created" } # item.create
+  after_save { puts "saved" } # item.save item.create item.update_attributes
+  after_destroy{ puts "deleted" } # item.destroy
 
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)

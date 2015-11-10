@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   protect_from_forgery :except => [:index, :ext, :direct, :dispatcher]
   protected
 
+private
   def check_permissions
     authorize :admin
   end

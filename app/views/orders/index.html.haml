@@ -1,8 +1,9 @@
 - model_class = Order
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-= render "paginate_top"
+= render "orders/paginate_top"
 #orders
-  = render "orders"
-= render "paginate_bottom"
-= link_to 'New Order', new_user_order_path(@user)
+  = render "orders/orders"
+= render "orders/paginate_bottom"
+- if policy(:order).new?
+  = link_to 'New Order', new_user_order_path(current_user)

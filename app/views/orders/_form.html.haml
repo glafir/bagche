@@ -24,6 +24,6 @@
     .controls
       = f.number_field :order_state_id, class: 'form-control', required: true
   = f.submit nil, :class => 'btn btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), user_orders_path(@user), :class => 'btn btn-default'
-  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+= link_to t('.cancel', :default => t("helpers.links.cancel")), user_orders_path(@user), :class => 'btn btn-default'
+= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
 

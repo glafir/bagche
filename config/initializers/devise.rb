@@ -152,7 +152,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  config.timeout_in = 60.minutes
+  config.timeout_in = 30.minutes
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -203,7 +203,7 @@ Devise.setup do |config|
   #
   # Require the `devise-encryptable` gem when using anything other than bcrypt
   config.encryptor = :sha512
-
+  #config.encryptor = :sha1
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
@@ -237,6 +237,19 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :google_oauth2, "331350626612-na0duqajbcq369esee4g5s4nq6hjdcko.apps.googleusercontent.com", "lzAX85wyPQdn87IxjF88mMgu", 
+    {
+      access_type: "offline",
+      scope: 'profile,email',
+      approval_prompt: ""
+    }
+
+  config.omniauth :vkontakte, '5115716', 'soOjxrxfY4abQDTjuzdq',
+    {
+      :scope => 'friends,audio,photos,email',
+      :display => 'popup',
+      :image_size => 'original'
+    }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

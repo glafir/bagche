@@ -16,7 +16,7 @@
       = ActiveSupport::TimeZone.new(@user.time_zone).formatted_offset
     %p
       %b Town:
-      = @user.town.accent_city
+      = @user.town.accent_city if @user.town_id?
     %p
       %b Статус:
       = @user.role 

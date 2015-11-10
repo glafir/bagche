@@ -9,6 +9,7 @@
       %th= model_class.human_attribute_name(:quantity)
       %th= model_class.human_attribute_name(:price)
       %th= model_class.human_attribute_name(:description)
+      %th Изображения на товар
       %th Заказы на этот товар
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -22,12 +23,15 @@
         %td= product.quantity if product.quantity?
         %td= product.price if product.price?
         %td= product.description if product.description?
-        %td= link_to "Просмотреть все заказы по данному товару", product
         %td=l product.created_at, format: :long
+        %td= link_to 'картинками товара', product_prod_images_path(product), :class => 'btn btn-primary'
+        %td= link_to "заказы по товару", product, :class => 'btn btn-primary'
         %td
           = link_to product_path(product), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
             = glyph 'info-sign'
-          = link_to edit_product_path(product), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
-            = glyph 'pencil'
-          = link_to product_path(product), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }"  do
-            = glyph 'remove'
+          -if policy(product).edit?
+            = link_to edit_product_path(product), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
+              = glyph 'pencil'
+          -if policy(product).destroy?
+            = link_to product_path(product), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }"  do
+              = glyph 'remove'

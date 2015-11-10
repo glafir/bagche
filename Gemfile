@@ -18,7 +18,6 @@ gem 'owlcarousel-rails'
 
 gem 'protected_attributes'
 
-#gem 'activerecord-session_store'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem "jquery-easing-rails"
@@ -30,10 +29,16 @@ gem "momentjs-rails"
 gem 'rails-jquery-autocomplete'
 gem 'mysql2', '~> 0.3.20'
 gem 'bcrypt-ruby'
+
 gem 'devise'
 gem 'devise-encryptable'
 gem 'warden'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+gem "omniauth-google-oauth2"
 gem 'devise_traceable'
+
 gem 'i18n'
 gem 'devise-i18n'
 gem 'rails-i18n'

@@ -1,9 +1,18 @@
 IcApp::Application.routes.draw do
-#  resources :order_histories
-#  resources :prod_images
+  namespace :users do
+    get 'omniauth_callbacks/facebook'
+  end
+
+  namespace :users do
+    get 'omniauth_callbacks/vkontakte'
+  end
+
+  get 'home/index' => 'home#index', :as => 'home'
+  get 'home/about' => 'home#about', :as => 'about'
+  get '/catalog' => "home#catalog", :as => 'catalog'
+
   resources :comments, :order_states, :brands, :flash_message_states
 
-#  resources :orders
   resources :orders, only: [:index]
   resources :products do
     collection { post :import }
@@ -41,11 +50,14 @@ IcApp::Application.routes.draw do
 
   devise_for :users, :controllers => {
     :sessions => 'users/sessions',
-    :registrations => "users/registrations"
+    :passwords => 'users/passwords',
+    :registrations => "users/registrations",
+    :confirmations => "users/confirmations",
+    :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
   devise_scope :user do
-    root :to => 'products#index'
+    root :to => "home#index"
     get "sign_in", :to => "users/sessions#new"
     get "users/sign_out", :to => "users/sessions#destroy"
     delete "users/sign_out", :to => "users/sessions#destroy"

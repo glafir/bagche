@@ -2,19 +2,20 @@
 %html(lang="en")
   = render "layouts/head"
   %body
-    - if user_signed_in?
-      = render "layouts/menu_top_secure"
-      .container
+    .container
+      - if user_signed_in?
+        = render "layouts/menu_top_secure"
         .row
-          .col-lg-10.col-md-14
+          .col-lg-18.col-md-21
             = bootstrap_flash
             = yield
-    -else
-      = render "layouts/menu_top_publish"
-      .container
+      -else
+        = render "layouts/menu_top_publish"
         .row
-          .col-lg-10.col-md-14
+          .col-lg-18.col-md-21
             = bootstrap_flash
             = yield
-    %footer
-      = render "layouts/footer"
+      %footer#footer.footer
+        .row
+          .col-lg-18.col-md-21
+            = render "layouts/footer"

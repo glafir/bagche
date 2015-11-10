@@ -1,10 +1,10 @@
 class UserRegistrationPolicy < ApplicationPolicy
   def new?
-    admin
+    true
   end
 
   def create?
-    admin
+    true
   end
 
   def edit?
@@ -16,7 +16,7 @@ class UserRegistrationPolicy < ApplicationPolicy
   end
 
   def sign_up?
-    admin
+    true
   end
 
   def account_update?

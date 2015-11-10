@@ -12,6 +12,7 @@ class OrderStatesController < ApplicationController
   # GET /order_states/1
   def show
     authorize @order_state
+    @comments = @order.comments
     respond_with @order_state
   end
 

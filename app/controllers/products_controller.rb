@@ -1,24 +1,28 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :except => [:index, :show]
-  after_action :verify_authorized, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => :show
+  after_action :verify_authorized, :except => :show
   def import
     authorize Product
     Product.import(params[:file])
-    redirect_to root_url, notice: "Products imported."
+    redirect_to products_path, notice: "Products imported."
   end
 
   # GET /products
   def index
-    @products = Product.all.order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])
-#    authorize Product.all
+    @products = Product.page(params[:page]).per(params[:limit])
+    @brands = Product.group("brand_id")
+    authorize @products
     respond_with @products
   end
 
   # GET /products/1
   def show
     @prod_images = @product.prod_images
-#    authorize @product
+#    @orders = @product.orders.page(params[:page]).per(params[:limit])
+    @orders = OrderPolicy::Scope.new(current_user, Order).resolve.where(product_id: @product.id).page(params[:page]).per(params[:limit]) if user_signed_in?
+    @comments = @product.comments.last(10)
+    @comment = Comment.new(params[:comment_id])
     respond_with @product
   end
 
@@ -62,6 +66,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+      @item = Product.find(params[:id])
     end
 
     def sort_column

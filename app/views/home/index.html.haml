@@ -1,0 +1,79 @@
+= render "home/carousel"
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Добро пожаловать водитель
+        %br друг и товарищ - автолюбитель!
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h4
+            %i.fa.fa-fw.fa-check
+            У нас легко найти!
+        .panel-body
+          %p Какой-то небольшой текст
+          %a.btn.btn-default{:href => "/catalog"} Перейти к каталогу
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h4
+            %i.fa.fa-fw.fa-gift
+            Легко заказать!
+        .panel-body
+          %p Какой-то небольшой текст
+          %a.btn.btn-default{:href => "/users/sign_in"} Войти в систему
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h4
+            %i.fa.fa-fw.fa-compass
+            Легко нас найти!
+        .panel-body
+          %p Какой-то небольшой текст
+          %a.btn.btn-default{:href => "/home/about"} Связаться с нами
+  .row
+    .col-lg-12
+      %h2.page-header Последние поступления
+    .col-md-4.col-sm-6
+      %a{:href => "portfolio-item.html"}
+        %img.img-responsive.img-portfolio.img-hover{:alt => "", :src => "http://placehold.it/700x450"}/
+    .col-md-4.col-sm-6
+      %a{:href => "portfolio-item.html"}
+        %img.img-responsive.img-portfolio.img-hover{:alt => "", :src => "http://placehold.it/700x450"}/
+    .col-md-4.col-sm-6
+      %a{:href => "portfolio-item.html"}
+        %img.img-responsive.img-portfolio.img-hover{:alt => "", :src => "http://placehold.it/700x450"}/
+    .col-md-4.col-sm-6
+      %a{:href => "portfolio-item.html"}
+        %img.img-responsive.img-portfolio.img-hover{:alt => "", :src => "http://placehold.it/700x450"}/
+    .col-md-4.col-sm-6
+      %a{:href => "portfolio-item.html"}
+        %img.img-responsive.img-portfolio.img-hover{:alt => "", :src => "http://placehold.it/700x450"}/
+    .col-md-4.col-sm-6
+      %a{:href => "portfolio-item.html"}
+        %img.img-responsive.img-portfolio.img-hover{:alt => "", :src => "http://placehold.it/700x450"}/
+  .row
+    .col-lg-12
+      %h2.page-header Текст внизу.
+    .col-md-6
+      %p Какие-то критерии:
+      %ul
+        %li
+          %strong Усиленный критерий
+        %li Что-то ещё 1
+        %li Что-то ещё 2
+        %li Что-то ещё 3
+        %li Что-то ещё 4
+        %li Что-то ещё 5
+      %p Какой-то заключительный текст.
+    .col-md-6
+      %img.img-responsive{:alt => "", :src => "http://placehold.it/700x450"}/
+  %hr
+  .well
+    .row
+      .col-md-8
+        %p Для менеджеров и администраторов
+      .col-md-4
+        %a.btn.btn-lg.btn-default.btn-block{:href => "/users/sign_in"} Войти в систему
+  %hr

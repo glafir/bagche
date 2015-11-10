@@ -2,15 +2,25 @@
   = navbar_header
   = navbar_collapse do
     = navbar_group class: 'logo', id: 'menu' do
+      = navbar_item '/home/index' do
+        %span.glyphicon.glyphicon-home
+        На главную!
       = navbar_dropdown "Поиск" do
         %li= link_to "По брэндам"
         %li= link_to "В категориях"
         %li= link_to "Поиск по всему каталогу"
-      = navbar_item '#' do
+      = navbar_item '/home/about' do
         %span.glyphicon.glyphicon-hand-right
         Связаться с нами!
+    - if url_for == products_path || url_for == catalog_path
+      = navbar_group class: 'products_filters', id: 'products_filters' do
+        %ul.nav.nav-tabs
+          %li= link_to 'Фильтр по брэндам', "#panel1", 'data-toggle' => "tab"
+          %li= link_to 'Фильтр по маркам авто', "#panel2", 'data-toggle' => "tab"
+          %li= link_to 'Фильтр по запчастям', "#panel3", 'data-toggle' => "tab"
     = navbar_group align: 'right' do
       = navbar_dropdown "Панель входа" do
+        %span.glyphicon.glyphicon-keys
         = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:data => {:ajax => 'false'}, class: "form user"} ) do |f|
           = f.text_field :login, :autofocus => true, class: "form-control border-radius-large", placeholder: "Username"
           = f.password_field :password, class: "form-control", placeholder: "Password"
@@ -18,11 +28,13 @@
             = f.label "запомнить меня"
             = f.check_box :remember_me
           = f.button "Войти", class: "btn btn-info btn-block"
-          %a{:href => "index.html"} Забыл пароль?
-          = f.label "или влйти с"
-          = f.button "Войти с Google", class: "btn btn-primary btn-block"
-          = f.button "Войти с VK", class: "btn btn-primary btn-block"
-          :javascript
-            var elem = document.querySelector('#user_remember_me');
-            var init = new Switchery(elem,{ color: '#fec200'});
+        = render "devise/shared/links"
+        =# link_to "Войти с Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-block"
+        = link_to "Войти с VKontakte", user_omniauth_authorize_path(:vkontakte), class: "btn btn-primary btn-block"
+        = link_to "Войти с Google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-block"
+
+
+        :javascript
+          var elem = document.querySelector('#user_remember_me');
+          var init = new Switchery(elem,{ color: '#fec200'});
 

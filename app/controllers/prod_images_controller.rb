@@ -2,18 +2,17 @@ class ProdImagesController < ApplicationController
   before_action :set_prod_image, only: [:show, :edit, :update, :destroy]
   before_action :set_product
   before_filter :authenticate_user!, :except => [:index, :show]
+  after_action :verify_authorized, :except => [:index, :show]
 
 
   # GET /prod_images
   def index
     @prod_images = @product.prod_images.order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])
-    authorize @prod_images
     respond_with @prod_images
   end
 
   # GET /prod_images/1
   def show
-    authorize @prod_image
     respond_with @prod_image
   end
 
