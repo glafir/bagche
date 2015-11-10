@@ -11,21 +11,20 @@
       %th Обновлён
       %th История заказа
       %th
-      %th
-      %th
 
   %tbody
     - @orders.each do |order|
       %tr
-        %td= link_to "Заказ №#{order.id}", user_order_path(@user, order)
-        %td= link_to "Заказ №#{order.id}", order.product
+        %td= link_to "Заказ №#{order.id}", user_order_path(order.user, order)
+        %td= link_to "#{order.product.name} (#{order.product.brand.namebrand})", order.product
         %td= link_to order.user.username, order.user if order.user.id?
         %td= link_to order.manager.username, order.manager if order.manager_id?
         - bgcolor = '#173B0B' if order.order_state_id == 1
         %td{bgcolor: bgcolor}= order.order_state.state
         %td=l order.created_at, format: :long
         %td=l order.updated_at, format: :long
-        %td= link_to "Плказать историю заказа", user_order_order_histories_path(@user, order)
-        %td= link_to 'Show', user_order_path(@user, order)
-        %td= link_to 'Edit', edit_user_order_path(@user, order)
-        %td= link_to 'Destroy', user_order_path(@user, order), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to "Плказать историю заказа", user_order_order_histories_path(order.user, order)
+        %td
+          = link_to 'Show', user_order_path(order.user, order), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }"
+          = link_to 'Edit', edit_user_order_path(order.user, order), :class => 'btn btn-xs'
+          = link_to 'Destroy', user_order_path(order.user, order), :class => 'btn btn-xs', :method => :delete, :data => { :confirm => 'Are you sure?' }

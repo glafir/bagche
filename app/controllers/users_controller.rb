@@ -58,6 +58,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :username, :time_zone, :town_id, :user_theme_id, :role, :avatar, :aircompany_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :username, :time_zone, :town_id, :user_theme_id, :role, :avatar, :aircompany_id, :nickname, :provider, :url)
   end
 end

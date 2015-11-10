@@ -1,18 +1,20 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
+after_action :verify_authorized, :except => [:show, :new, :create]
+
   # GET /resource/confirmation/new
-  # def new
+# def new
   #   super
-  # end
+# end
 
   # POST /resource/confirmation
-  # def create
+# def create
   #   super
-  # end
+# end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-  # def show
+# def show
   #   super
-  # end
+# end
 
   # protected
 

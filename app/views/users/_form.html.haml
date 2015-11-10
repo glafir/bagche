@@ -27,11 +27,11 @@
     = f.label :town_id, class: 'control-label'
     .controls
       = autocomplete_field_tag 'town', '', autocomplete_town_accent_city_towns_path, :size => 30, 'data-auto-focus' => true, :update_elements => {:id => '#user_town_id'}, :value => params[:town],  class: 'form-control'
-      = f.hidden_field :town_id, required: true
+      = f.hidden_field :town_id
   .form-group
     = f.label :user_theme_id, class: 'control-label'
     .controls
-      = f.select :user_theme_id, UserTheme.order(:theme).collect{|item| [item.theme, item.id]}, {}, class: 'form-control', required: true
+      = f.select :user_theme_id, UserTheme.order(:theme).collect{|item| [item.theme, item.id]}, {}, class: 'form-control'
   .form-group
     = f.label :role, class: 'control-label'
     .controls

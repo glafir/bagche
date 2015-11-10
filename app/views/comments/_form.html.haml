@@ -1,28 +1,33 @@
-= form_for @comment, html: { class: "form form-horizontal comment" } do |f|
-  - if @comment.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
-      %ul
-        - @comment.errors.full_messages.each do |msg|
-          %li= msg
+- if user_signed_in?
+  = form_for @comment, html: { class: "form form-horizontal comment" } do |f|
+    - if @comment.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+        %ul
+          - @comment.errors.full_messages.each do |msg|
+            %li= msg
 
-  .form-group
-    = f.label :comment, :class => 'control-label col-md-2'
-    .controls
-      = f.text_field :comment, class: 'form-control', required: true
-  .form-group
-    = f.label :user_id, :class => 'control-label col-md-2'
-    .controls
-      = f.number_field :user_id, class: 'form-control', required: true
-  .form-group
-    = f.label :product_id, :class => 'control-label col-md-2'
-    .controls
-      = f.number_field :product_id, class: 'form-control', required: true
-  .form-group
-    = f.label :order_id, :class => 'control-label col-md-2'
-    .controls
-      = f.number_field :order_id, class: 'form-control', required: true
-  = f.submit nil, :class => 'btn btn-primary'
+    - unless params[:comment] && params[:comment][:commentable_id] && params[:comment][:commentable_type]
+      = f.hidden_field :commentable_id,    :value => @item.id
+      = f.hidden_field :commentable_type,  :value => "Item"
+      = f.hidden_field :item_id,    :value => @item.id
+      = f.hidden_field :item_type,  :value => @item.class
+    - else
+      = f.hidden_field :commentable_id,    :value => params[:comment][:commentable_id]
+      = f.hidden_field :commentable_type,  :value => params[:comment][:commentable_type]
+      = f.hidden_field :item_id,    :value => params[:comment][:item_id]
+      = f.hidden_field :item_type,  :value => params[:comment][:item_type]
+    = f.hidden_field :user_id, :value => current_user.id
+
+    .form-group
+      = f.label :title, :class => 'control-label'
+      .controls
+        = f.text_field :title, size: 60, required: true
+    .form-group
+      = f.label :comment, :class => 'control-label'
+      .controls
+        = f.text_area :comment, rows: 10, cols: 60, required: true
+    = f.submit nil, :class => 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), comments_path, :class => 'btn btn-default'
   = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
 

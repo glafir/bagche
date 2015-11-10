@@ -15,6 +15,6 @@
     .controls
       = f.file_field :prodimage, class: 'form-control', required: true
   = f.submit nil, :class => 'btn btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), product_prod_images_path(@product), :class => 'btn btn-default'
-  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+= link_to t('.cancel', :default => t("helpers.links.cancel")), product_prod_images_path(@product), :class => 'btn btn-default'
+= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
 

@@ -6,11 +6,6 @@ class OrdersController < ApplicationController
 
   # GET /orders
   def index
-#    if current_user.user? or current_user.client?
-#      @orders = @user.orders.order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])
-#    else
-#      @orders = Order.order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])
-#    end
     authorize Order
     @orders = OrderPolicy::Scope.new(current_user, Order).resolve.page(params[:page]).per(params[:limit])
     respond_with @orders
@@ -81,6 +76,7 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+      @item = Order.find(params[:id])
     end
 
     def sort_column

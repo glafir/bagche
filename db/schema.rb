@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016154809) do
+ActiveRecord::Schema.define(version: 20151021173811) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "namebrand",  limit: 255
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20151016154809) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "comment",    limit: 255
-    t.integer  "user_id",    limit: 4
+    t.integer  "user_id",    limit: 4,   null: false
     t.integer  "order_id",   limit: 4
     t.integer  "product_id", limit: 4
     t.datetime "created_at",             null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20151016154809) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "user_id",        limit: 4
+    t.integer  "user_id",        limit: 4,             null: false
     t.integer  "manager_id",     limit: 4
     t.integer  "product_id",     limit: 4,             null: false
     t.integer  "order_state_id", limit: 4, default: 1, null: false
@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(version: 20151016154809) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "brand_id",      limit: 255
+    t.integer  "brand_id",      limit: 4,               null: false
     t.string   "name",          limit: 255
+    t.string   "amodel",        limit: 255
     t.string   "artcode",       limit: 255
     t.integer  "quantity",      limit: 4
     t.float    "price",         limit: 24
@@ -186,19 +187,28 @@ ActiveRecord::Schema.define(version: 20151016154809) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "username",               limit: 255,              null: false
+    t.string   "nickname",               limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "url",                    limit: 255
+    t.string   "uid",                    limit: 255
     t.string   "time_zone",              limit: 255,              null: false
-    t.integer  "town_id",                limit: 4,                null: false
+    t.integer  "town_id",                limit: 4
+    t.integer  "manager_id",             limit: 4,   default: 0,  null: false
     t.integer  "user_theme_id",          limit: 4,   default: 1,  null: false
-    t.integer  "role",                   limit: 4,   default: 1,  null: false
-    t.integer  "aircompany_id",          limit: 4,   default: 1
+    t.integer  "role",                   limit: 4,   default: 4,  null: false
     t.datetime "last_seen"
     t.string   "password_salt",          limit: 255
     t.string   "avatar",                 limit: 255
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree

@@ -1,0 +1,23 @@
+- model_class = Product
+.raw
+  .col-md-4.col-lg-3
+    %p
+      %b.label.label-default= model_class.human_attribute_name(:brand_id)
+      = @product.brand_id
+    %p
+      %b.label.label-default= model_class.human_attribute_name(:name)
+      = @product.name
+    %p
+      %b.label.label-default= model_class.human_attribute_name(:artcode)
+      = @product.artcode
+    %p
+      %b.label.label-default= model_class.human_attribute_name(:quantity)
+      = @product.quantity
+    %p
+      %b.label.label-default= model_class.human_attribute_name(:price)
+      #{@product.price} руб.
+    %p
+      %b.label.label-default= model_class.human_attribute_name(:description)
+      %br
+      = @product.description
+

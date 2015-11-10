@@ -10,10 +10,8 @@
     .form-group
       %li= f.label :remember
       = f.check_box :remember_me
-  %p.login-submit
-    = f.button "Sign in", class: "btn btn-default"
-  %p.forgot-password
-    %a{:href => "index.html"} Забыл пароль?
-  :javascript
-    var elem = document.querySelector('#user_remember_me');
-    var init = new Switchery(elem,{ color: '#fec200'});
+  = f.button "Войти", class: "btn btn-info"
+%p= render "devise/shared/links"
+:javascript
+  var elem = document.querySelector('#user_remember_me');
+  var init = new Switchery(elem,{ color: '#fec200'});

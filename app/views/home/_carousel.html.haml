@@ -1,0 +1,25 @@
+#myCarousel.carousel.slide{"data-interval" => "3000", "data-ride" => "carousel"}
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+  .carousel-inner
+    .active.item{style: "background-image:url('/uploads/home/images/toyota-rav4-02.png');"}
+      %h2 Toyota
+      .carousel-caption
+        %h3 Запчасти для toyota
+        %p 
+    .item{style: "background-image:url('/uploads/home/images/sportage.png');"}
+      %h2 Kia
+      .carousel-caption
+        %h3 Запчасти для Kia
+        %p
+    .item{style: "background-image:url('/uploads/home/images/Ford-Focus-Electric-edit.png');"}
+      %h2 Ford
+      .carousel-caption
+        %h3 Запчасти для Ford
+        %p
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-left
+  %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-right

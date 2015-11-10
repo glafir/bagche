@@ -4,8 +4,14 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def index?
-    readers
+    writers or @user.manager? or @user.client?
   end
+
+  def show?
+    true
+#    writers or @user.manager? or @user.client?
+  end
+
 
   def create?
     writers or @user.manager?

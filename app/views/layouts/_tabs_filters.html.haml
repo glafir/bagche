@@ -1,0 +1,16 @@
+.tab-content
+  #panel1.tab-pane.fade
+    = link_to tag('input', :type => 'button', :value => 'x', :class => "close"), 'javascript:;'
+    %h3 Отфильтровать бренды.
+    = render "products/filters"
+  #panel2.tab-pane.fade
+    = link_to ('<button class="close" type="button">×</button> foo'), 'javascript:;'
+    %h3 Отфильтровать марки машин.
+    %p Содержимое 2 панели
+  #panel3.tab-pane.fade
+    = link_to ('<button class="close" type="button">×</button> foo'), 'javascript:;'
+    %h3 Отфильтровать по запчастям.
+    %p Содержимое 3 панели
+
+
+

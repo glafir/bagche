@@ -27,7 +27,7 @@ module IcApp
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     ##config.time_zone = 'Etc/GMT__m__11'
-    config.time_zone = 'Vladivostok'
+    config.time_zone = 'Moscow'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -62,12 +62,11 @@ module IcApp
     config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
       allow do
         origins '*'
-
         resource '/netzke/*',
-          :headers => :any,
-          :methods => [:get, :post, :delete, :put, :options, :head],
-          :credentials => true,
-          :max_age => 0
+        :headers => :any,
+        :methods => [:get, :post, :delete, :put, :options, :head],
+        :credentials => true,
+        :max_age => 0
       end
     end
   end

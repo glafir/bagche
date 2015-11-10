@@ -1,0 +1,7 @@
+.comment
+  .comment-header Ответ пользователя #{link_to comment.user.username, comment.user} от #{comment.created_at.to_formatted_s(:short)}
+  .comment-text
+    = comment.title
+    = comment.comment
+    = link_to "Ответить на комментарий", new_comment_path({:comment => {:commentable_id => comment.id, :commentable_type => "Comment", :item_id => @item.id, :item_type => @item.class }})
+  = render :partial => "comments/comment", :collection => comment.comments

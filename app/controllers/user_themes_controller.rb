@@ -1,6 +1,6 @@
 class UserThemesController < ApplicationController
   before_filter :set_user_theme, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! 
 
   def index
     @user_themes = UserTheme.all

@@ -1,18 +1,17 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:index, :show]
+  after_action :verify_authorized, :except => [:index, :show]
 
 
   # GET /comments
   def index
     @comments = Comment.all.order(sort_column + " " + sort_direction).page(params[:page]).per(params[:limit])
-    authorize Comment.all
     respond_with @comments
   end
 
   # GET /comments/1
   def show
-    authorize @comment
     respond_with @comment
   end
 
@@ -65,6 +64,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:comment, :user_id, :order_id, :product_id)
+      params.require(:comment).permit(:comment, :user_id, :title, :commentable_type, :commentable_id, :item_id, :item_type)
     end
 end

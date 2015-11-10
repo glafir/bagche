@@ -1,0 +1,28 @@
+.comments{
+        padding:1% ;
+        -webkit-border-radius:6px;
+        -moz-border-radius:5px;
+        -khtml-border-radius:10px;
+        box-shadow: 0 0 30px 30px #292A2B;
+	background-color:#292A2B;
+}
+.comment{
+	margin:0 -5px 10px 20px;
+	padding:10px 0 0 10px;
+	border:3px solid #6A6B6B;
+        background-color:#353535;
+}
+.comment-header{
+	margin: -10px 0 0 -10px;
+	padding:10px 0 10px 10px;
+	font-size: .8em;
+	border-bottom: 1px solid #dfdfdf;
+        background-color:#383839;
+}
+.comment-text{
+	margin: 0;
+	padding: 10px 0;
+}
+.form_answer{
+	padding: 30px 10px 40px 5px;
+}

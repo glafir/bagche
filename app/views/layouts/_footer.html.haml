@@ -1,10 +1,15 @@
-%footer#footer.footer
-  %p This a Desktop Version
-  %p
-  %p
-    Страница загружена за #{Benchmark.ms { yield }} сек
-  %p
-    © 2011 - #{Date.current.year}
-  %p v2.7.0 release from 21-08-2015
-  %p
-    %a{:href => "mailto:glafir@bk.ru"} Напишите нам!!!
+.raw
+  .col-lg-4.col-md-4
+    %li This a Desktop Version
+    %li Страница загружена за #{Benchmark.ms { yield }} сек
+  .col-lg-4.col-md-4
+    %li © 2011 - #{Date.current.year}
+    %li v2.7.0 release from 21-08-2015
+  .col-lg-4.col-md-4
+    %li Телефон 1
+    %li Телефон 2
+.raw
+  .col-lg-12.col-md-12
+    %li
+      %a{:href => "mailto:glafir@bk.ru"} Напишите нам!!!
+

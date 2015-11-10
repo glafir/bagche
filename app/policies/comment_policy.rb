@@ -1,10 +1,10 @@
 class CommentPolicy < ApplicationPolicy
   def index?
-    readers
+    true
   end
 
   def show?
-    readers
+    true
   end
 
   def new?
